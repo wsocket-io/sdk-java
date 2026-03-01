@@ -2,7 +2,7 @@
 
 Official Java SDK for [wSocket](https://wsocket.io) — Realtime Pub/Sub over WebSockets.
 
-[![Maven Central](https://img.shields.io/maven-central/v/io.wsocket/wsocket-sdk)](https://central.sonatype.com/artifact/io.wsocket/wsocket-sdk)
+[![Maven Central](https://img.shields.io/maven-central/v/io.wsocket/wsocket-io)](https://central.sonatype.com/artifact/io.wsocket/wsocket-io)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 ## Installation
@@ -12,7 +12,7 @@ Official Java SDK for [wSocket](https://wsocket.io) — Realtime Pub/Sub over We
 ```xml
 <dependency>
     <groupId>io.wsocket</groupId>
-    <artifactId>wsocket-sdk</artifactId>
+    <artifactId>wsocket-io</artifactId>
     <version>0.1.0</version>
 </dependency>
 ```
@@ -20,7 +20,7 @@ Official Java SDK for [wSocket](https://wsocket.io) — Realtime Pub/Sub over We
 ### Gradle
 
 ```groovy
-implementation 'io.wsocket:wsocket-sdk:0.1.0'
+implementation 'io.wsocket:wsocket-io:0.1.0'
 ```
 
 ## Quick Start
