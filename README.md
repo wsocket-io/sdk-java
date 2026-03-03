@@ -31,7 +31,7 @@ import io.wsocket.sdk.Client.Channel;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        Client client = new Client("wss://your-server.com", "your-api-key");
+        Client client = new Client("wss://node00.wsocket.online", "your-api-key");
         client.connect();
 
         Channel chat = client.channel("chat:general");
