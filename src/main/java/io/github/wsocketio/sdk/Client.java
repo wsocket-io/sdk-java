@@ -1,4 +1,4 @@
-package io.wsocket.sdk;
+package io.github.wsocketio.sdk;
 
 import com.google.gson.*;
 import okhttp3.*;
