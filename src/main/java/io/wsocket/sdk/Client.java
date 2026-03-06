@@ -356,6 +356,7 @@ public class Client {
     /** Get or create a channel reference.
      * @deprecated Use client.pubsub.channel(name) for new code.
      */
+    @Deprecated
     public Channel channel(String name) {
         return channels.computeIfAbsent(name, n -> new Channel(n, this));
     }
@@ -564,6 +565,8 @@ public class Client {
             this.baseUrl = baseUrl.replaceAll("/$", "");
             this.token = token;
             this.appId = appId;
+            this.http = http;
+            this.gson = gson;
         }
 
         private JsonObject apiRequest(String method, String path, JsonObject body) throws IOException {
