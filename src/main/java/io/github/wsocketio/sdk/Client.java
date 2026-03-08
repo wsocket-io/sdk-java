@@ -638,6 +638,38 @@ public class Client {
             body.addProperty("body", msgBody);
             return apiRequest("POST", "/api/admin/apps/" + appId + "/push/send", body);
         }
+
+        /** Add a channel to a member's push subscriptions. */
+        public JsonObject addChannel(String memberId, String channel) throws IOException {
+            JsonObject body = new JsonObject();
+            body.addProperty("memberId", memberId);
+            body.addProperty("channel", channel);
+            return apiRequest("POST", "/api/push/channels/add", body);
+        }
+
+        /** Remove a channel from a member's push subscriptions. */
+        public JsonObject removeChannel(String memberId, String channel) throws IOException {
+            JsonObject body = new JsonObject();
+            body.addProperty("memberId", memberId);
+            body.addProperty("channel", channel);
+            return apiRequest("POST", "/api/push/channels/remove", body);
+        }
+
+        /** Get the VAPID public key for this app. */
+        public String getVapidKey() throws IOException {
+            JsonObject res = apiRequest("GET", "/api/push/vapid-key", null);
+            return res.has("vapidPublicKey") ? res.get("vapidPublicKey").getAsString() : null;
+        }
+
+        /** List push subscriptions with optional filters. */
+        public JsonObject listSubscriptions(String memberId, String platform, int limit) throws IOException {
+            StringBuilder qs = new StringBuilder();
+            String sep = "?";
+            if (memberId != null && !memberId.isEmpty()) { qs.append(sep).append("memberId=").append(memberId); sep = "&"; }
+            if (platform != null && !platform.isEmpty()) { qs.append(sep).append("platform=").append(platform); sep = "&"; }
+            if (limit > 0) { qs.append(sep).append("limit=").append(limit); }
+            return apiRequest("GET", "/api/push/subscriptions" + qs.toString(), null);
+        }
     }
 
     // ─── PubSub Namespace ───────────────────────────────────
