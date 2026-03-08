@@ -78,6 +78,25 @@ chat.onHistory(result -> {
 chat.history(new HistoryOptions().limit(50));
 ```
 
+## Push Notifications
+
+```java
+PushClient push = new PushClient("https://your-server.com", "your-api-key", "your-app-id");
+
+// Register & send
+push.registerFCM("device-token", "user-123");
+push.sendToMember("user-123", new JsonObject().addProperty("title", "Hello"));
+push.broadcast(new JsonObject().addProperty("title", "News"));
+
+// Channel targeting
+push.addChannel("subscription-id", "alerts");
+push.removeChannel("subscription-id", "alerts");
+
+// VAPID key & subscriptions
+String vapidKey = push.getVapidKey();
+String subs = push.listSubscriptions("user-123");
+```
+
 ## Requirements
 
 - Java >= 17
