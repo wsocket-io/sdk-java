@@ -615,6 +615,12 @@ public class Client {
             return res.get("removed").getAsInt();
         }
 
+        /** Delete a specific push subscription by its ID. */
+        public boolean deleteSubscription(String subscriptionId) throws IOException {
+            JsonObject res = apiRequest("DELETE", "/api/admin/apps/" + appId + "/push/subscriptions/" + subscriptionId, null);
+            return res.has("deleted") && res.get("deleted").getAsBoolean();
+        }
+
         /** Send a push notification to a specific member. */
         public JsonObject sendToMember(String memberId, String title, String msgBody) throws IOException {
             JsonObject body = new JsonObject();
